@@ -58,5 +58,7 @@ with col_txt:
     st.markdown("#### ✨ Описание")
     st.info(descriptions[choice])
 
+
+
 # Шарики
 st.balloons()
