@@ -25,7 +25,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.markdown("<h1>🤎 Семь Чудес Казахстана 🤎</h1>", unsafe_allow_html=True)
-st.info(f"<p style='text-align:center; color:#3E2723;'>Ученик: Назар Солодовников, ОШ №125</p>", unsafe_allow_html=True)
+st.write(f"<p style='text-align:center; color:#3E2723;'>Ученик: Назар Солодовников, ОШ №125</p>", unsafe_allow_html=True)
 
 # 2. База данных (Максимально короткие строки!)
 data = {
