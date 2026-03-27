@@ -6,36 +6,13 @@ st.set_page_config(page_title="7 чудес Казахстана 🇰🇿", layo
 # 2. МЕГА-СТИЛЬ: Бежевый фон и Оранжевые элементы
 st.markdown("""
     <style>
-        /* Главный фон всего приложения (Бежевый) */
-        .stApp {
-            background-color: #F5F5DC;
-        }
-
-        /* Стиль для заголовков (Оранжевый) */
-        h1, h2, h3 {
-            color: #FF8C00 !important;
-            font-family: 'Trebuchet MS', sans-serif;
-        }
-
-        /* Оранжевые блоки st.info */
-        .stAlert {
-            background-color: #FFFAF0;
-            border: 2px solid #FF8C00;
-            border-radius: 15px;
-        }
-
-        /* Стиль выпадающего списка */
-        .stSelectbox div[data-baseweb="select"] {
-            border: 2px solid #FF8C00;
-            border-radius: 10px;
-        }
-
-        /* Скрытие лишних кнопок Streamlit */
+        .stApp { background-color: #F5F5DC; }
+        h1, h2, h3 { color: #FF8C00 !important; font-family: 'Arial', sans-serif; }
+        .stAlert { background-color: #FFFAF0; border: 2px solid #FF8C00; border-radius: 15px; }
+        .stSelectbox div[data-baseweb="select"] { border: 2px solid #FF8C00; border-radius: 10px; }
         [data-testid="stHeaderActionElements"] { display: none; }
         #MainMenu {visibility: hidden;}
         footer {visibility: hidden;}
-
-        /* Мобильное меню */
         @media (max-width: 768px) {
             header[data-testid="stHeader"] { visibility: visible !important; background-color: rgba(0,0,0,0); }
         }
@@ -45,30 +22,34 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Шапка сайта со смайликами
 st.markdown("<h1 style='text-align: center;'>🧡 Семь Чудес Казахстана 🧡</h1>", unsafe_allow_html=True)
-st.markdown("<h3 style='text-align: center;'>✨ Менің Отаныма - менің бастамам ✨</h3>", unsafe_allow_html=True)
 st.info("🌟 Ученик: Солодовников Назар, КГУ ОШ №125 🎓🏫")
-st.write("---")
 
-# 3. База данных со смайликами 📝
+# 3. База данных (Всё проверено на кавычки!)
 data = {
     "Урочище Босжира 🏔️": {
         "img": "1.jpg",
-        "info": "⚪ Белоснежные скалы и космические пейзажи плато Устюрт! 👽",
-        "stats": "📈 Около 15,000 туристов в год 🎒",
-        "fact": "🎨 Скалы меняют цвет: от белого до розового под солнцем! ☀️",
-        "ads": "📱 VR-туры и QR-коды для мгновенной истории! 🤖"
+        "info": "⚪ Белоснежные скалы плато Устюрт! 👽",
+        "stats": "📈 15,000 туристов в год 🎒",
+        "fact": "🎨 Скалы меняют цвет на солнце! ☀️",
+        "ads": "📱 VR-туры и QR-коды! 🤖"
     },
     "Чарынский каньон 🏜️": {
         "img": "2.jpg",
-        "info": "🧱 Древний каньон, который называют 'Долиной замков'! 🏰",
-        "stats": "📈 Более 100,000 посетителей в год 📸",
-        "fact": "🌳 Здесь растет уникальный ясень, выживший в ледниковый период! ❄️",
-        "ads": "🎧 Аудиогиды на 3-х языках и крутые эко-фестивали! 🎸"
+        "info": "🧱 Древний каньон 'Долина замков'! 🏰",
+        "stats": "📈 100,000 посетителей в год 📸",
+        "fact": "🌳 Здесь растет реликтовый ясень! ❄️",
+        "ads": "🎧 Аудиогиды и эко-фестивали! 🎸"
     },
     "Озеро Балхаш 🌊": {
         "img": "3.jpg",
-        "info": "🌓 Уникальное озеро: одна сторона пресная, другая — соленая! 🧂",
+        "info": "🌓 Половина пресная, половина соленая! 🧂",
         "stats": "📈 200,000 отдыхающих за сезон 🏖️",
-        "fact": "🧊
+        "fact": "🧊 Зависит от ледников Тянь-Шаня! 🏔️",
+        "ads": "🤳 Реклама у блогеров и эко-туры! 🛶"
+    },
+    "Поющий Бархан ⏳": {
+        "img": "4.jpg",
+        "info": "🎵 Песчаная гора, которая поет! 🎶",
+        "stats": "📈 20,000 человек в год 🐪",
+        "fact": "📢 Его гул слышен за километры! ✈
