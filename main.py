@@ -1,11 +1,11 @@
 import streamlit as st
 
 # Настройка страницы
-st.set_page_config(page_title="7 чудес Казахстана", layout="wide")
+st.set_page_config(page_title="7 Чудес Казахстана 💫", layout="wide")
 
 st.markdown("<h1 style='text-align: center;'>KZ Семь Чудес Казахстана</h1>", unsafe_allow_html=True)
-st.markdown("<h2 style='text-align: center;'>Меңің Отаныма-меңің бастамам</h2>", unsafe_allow_html=True)
-st.write("Ученика Солодовникова Назара КГУ ОШ №125")
+st.markdown("<h2 style='text-align: center;'>Меңің Отаныма-меңің бастамам </h2>", unsafe_allow_html=True)
+st.info("Ученика Солодовникова Назара КГУ ОШ №125 🧑‍🎓")
 st.write("---")
 
 # Список картинок
@@ -46,7 +46,7 @@ with c1:
         st.error("Картинка не найдена. Проверь файлы 1.jpg, 2.jpg... на GitHub")
 
 with c2:
-    st.write("### Описание")
+    st.write("### Описание ⭐")
     st.info(descriptions[choice])
 
 st.balloons()
