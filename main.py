@@ -3,19 +3,33 @@ import streamlit as st
 # 1. Настройка страницы
 st.set_page_config(page_title="7 чудес Казахстана", layout="wide")
 
-# 2. CSS для скрытия только верхней панели с кнопками (Deploy, Share и т.д.)
+# 2. Умный CSS: скрываем лишнее, но сохраняем доступ к меню
 st.markdown("""
     <style>
-        /* Скрываем весь хедер (верхнюю полосу с кнопками) */
-        header[data-testid="stHeader"] {
-            visibility: hidden;
-            height: 0%;
+        /* Скрываем кнопки Share, Deploy и лишние иконки */
+        [data-testid="stHeaderActionElements"] {
+            display: none;
         }
-        /* Скрываем стандартное меню Streamlit и футер */
+        
+        /* Скрываем стандартное меню 'три точки' и футер */
         #MainMenu {visibility: hidden;}
         footer {visibility: hidden;}
-        
-        /* Убираем лишние отступы сверху, чтобы контент не уезжал вниз */
+
+        /* На мобильных устройствах (ширина меньше 768px) показываем кнопку меню */
+        @media (max-width: 768px) {
+            header[data-testid="stHeader"] {
+                visibility: visible !important;
+                background-color: rgba(0,0,0,0); /* Делаем фон прозрачным */
+            }
+        }
+
+        /* На компьютерах скрываем хедер полностью, чтобы не было полосы */
+        @media (min-width: 769px) {
+            header[data-testid="stHeader"] {
+                visibility: hidden;
+            }
+        }
+
         .block-container {
             padding-top: 1rem;
         }
@@ -50,7 +64,7 @@ descriptions = {
     "Озеро Каинды": "Каинды — мистическая сказка в лесах Тянь-Шаня. Из бирюзовой глади озера, словно мачты кораблей, поднимаются сухие стволы вековых елей."
 }
 
-# 3. Боковая панель (Выбор сохраняется)
+# 3. Боковая панель
 choice = st.sidebar.selectbox("Выберите чудо природы 💫:", list(wonders.keys()))
 
 st.subheader(choice)
