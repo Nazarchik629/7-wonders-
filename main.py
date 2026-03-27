@@ -4,24 +4,22 @@ import streamlit as st
 st.set_page_config(
     page_title="7 Чудес Казахстана 💫", 
     layout="wide",
-    initial_sidebar_state="expanded"  # Меню будет открыто сразу
+    initial_sidebar_state="expanded" 
 )
 
-# Умный CSS: скрываем лишнее, но оставляем кнопку навигации ('hamburger menu')
+# Умный CSS: скрываем лишнее, но оставляем кнопку навигации
 st.markdown("""
     <style>
-        /* Скрываем только стандартные элементы управления, не трогая саму кнопку меню */
         #MainMenu {visibility: hidden;}
         footer {visibility: hidden;}
         header[data-testid="stHeader"] {
-            background-color: rgba(0,0,0,0); /* Делаем шапку прозрачной */
-            color: white;
+            background-color: rgba(0,0,0,0);
         }
-        /* Делаем кнопку бокового меню более заметной на мобилках */
+        /* Кнопка открытия меню для мобилок */
         button[data-testid="baseButton-headerNoPadding"] {
-            background-color: #ff4b4b;
-            border-radius: 10px;
-            color: white;
+            background-color: #ff4b4b !important;
+            border-radius: 8px !important;
+            color: white !important;
         }
     </style>
 """, unsafe_allow_html=True)
@@ -31,7 +29,7 @@ st.markdown("<h1 style='text-align: center;'>KZ Семь Чудес Казахс
 st.markdown("<h2 style='text-align: center;'>Менің Отаныма - менің бастамам</h2>", unsafe_allow_html=True)
 st.info("Ученика Солодовникова Назара КГУ ОШ №125 🧑‍🎓")
 
-# Список данных
+# Данные
 wonders = {
     "Урочище Босжира": "1.jpg",
     "Чарынский каньон": "2.jpg",
@@ -48,14 +46,36 @@ descriptions = {
     "Озеро Балхаш": "Балхаш — это природный феномен. Это единственное в мире озеро, западная часть которого пресная, а восточная — соленая.",
     "Поющий Бархан": "Поющий бархан — это легенда пустыни Алтын-Эмель. В сухую погоду эта гигантская песчаная гора издает глубокий гул.",
     "Карабилуха (г. Белуха)": "Гора Белуха — это корона Алтая, священная двуглавая вершина, вечно укрытая сияющими ледниками.",
-    "Пик Хан-Тенгри": "Хан-Тенгри — «Повелитель неба», один из самых красивых семитысячников планеты. Его пирамида на заката вспыхивает розовым светом.",
+    "Пик Хан-Тенгри": "Хан-Тенгри — «Повелитель неба», один из самых красивых семитысячников планеты. Его пирамида на закате вспыхивает розовым светом.",
     "Озеро Каинды": "Каинды — мистическая сказка в лесах Тянь-Шаня. Из бирюзовой глади озера поднимаются сухие стволы вековых елей."
 }
 
-# 2. Двойная навигация (и в центре, и в боковой панели для надежности)
-st.write("### 🇰🇿 Выберите локацию:")
-choice = st.selectbox("Навигация по чудесам природы:", list(wonders.keys()), label_visibility="collapsed")
+# 2. Навигация
+# Основной выбор в центре (для мобильных)
+choice = st.selectbox("Выберите чудо природы:", list(wonders.keys()))
 
-# Дублируем выбор в боковую панель (если пользователь её откроет)
+# Дубликат в боковую панель (исправлено!)
 st.sidebar.title("Навигация")
-st.sidebar.radio("Перейти к:", list(wonders.keys()), key="sidebar_choice", index=list(wonders.keys()).index(
+st.sidebar.radio(
+    "Перейти к:", 
+    list(wonders.keys()), 
+    index=list(wonders.keys()).index(choice)
+)
+
+st.write("---")
+
+# 3. Контент
+st.write(f"### 📍 {choice}")
+col_img, col_txt = st.columns([2, 1])
+
+with col_img:
+    try:
+        st.image(wonders[choice], use_container_width=True)
+    except:
+        st.error(f"Файл {wonders[choice]} не найден.")
+
+with col_txt:
+    st.markdown("#### ✨ Описание")
+    st.success(descriptions[choice])
+
+st.balloons()
