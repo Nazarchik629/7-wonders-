@@ -60,4 +60,50 @@ w_data = {
         "img": "5.jpg",
         "desc": "Высшая точка Алтая в ледниках.",
         "stats": "5,000 чел/год",
-        "res":
+        "res": "Первое восхождение в 1914 г.",
+        "fact": "Центр Евразии (три океана).",
+        "ads": "Фотовыставки и фильмы."
+    },
+    "Пик Хан-Тенгри": {
+        "img": "6.jpg",
+        "desc": "Пирамида из розового мрамора.",
+        "stats": "2,000 чел/год",
+        "res": "Описан в 1857 году.",
+        "fact": "На закате светится розовым.",
+        "ads": "Трансляции восхождений."
+    },
+    "Озеро Каинды": {
+        "img": "7.jpg",
+        "desc": "Затонувший лес в бирюзовой воде.",
+        "stats": "40,000 чел/год",
+        "res": "Появилось в 1911 году.",
+        "fact": "Ели не гниют в ледяной воде.",
+        "ads": "Подводная фотосъемка."
+    }
+}
+
+# 3. Навигация
+choice = st.sidebar.selectbox("Выберите место:", list(w_data.keys()))
+
+st.subheader(f"📍 {choice}")
+
+# 4. Вывод данных
+c1, c2 = st.columns([2, 1])
+
+with c1:
+    try:
+        st.image(w_data[choice]["img"], use_container_width=True)
+    except:
+        st.error("Картинка не найдена.")
+    st.success(f"📢 Идея: {w_data[choice]['ads']}")
+
+with c2:
+    st.info(f"✨ {w_data[choice]['desc']}")
+    st.write("**Посещаемость:**")
+    st.info(w_data[choice]["stats"])
+    st.write("**Исследования:**")
+    st.info(w_data[choice]["res"])
+    st.write("**Факт:**")
+    st.info(w_data[choice]["fact"])
+
+st.balloons()
