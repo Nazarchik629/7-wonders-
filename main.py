@@ -3,7 +3,9 @@ import streamlit as st
 # Настройка страницы
 st.set_page_config(page_title="7 чудес Казахстана", layout="wide")
 
-st.markdown("<h1 style='text-align: center;'>🇰🇿 Семь природных чудес Казахстана</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center;'>Семь Чудес Казахстана 💫</h1>", unsafe_allow_html=True)
+st.markdown("<h2 style='text-align: center;'>Менің Отаныма менің бастамам</h2>", unsafe_allow_html=True)
+st.info("Ученика Солодовникова Назар КГУ ОШ №125 🧑‍🎓")
 st.write("---")
 
 # Список картинок
@@ -29,7 +31,7 @@ descriptions = {
 }
 
 # Боковая панель
-choice = st.sidebar.selectbox("Выберите чудо природы:", list(wonders.keys()))
+choice = st.sidebar.selectbox("Выберите чудо природы 💫:", list(wonders.keys()))
 
 st.subheader(choice)
 
@@ -41,10 +43,10 @@ with c1:
         # Упростил строку с картинкой, чтобы не было ошибок с кавычками
         st.image(wonders[choice], use_container_width=True)
     except:
-        st.error("Картинка не найдена. Проверь файлы 1.jpg, 2.jpg... на GitHub")
+        st.error("Картинка не найдена 🛑. Проверь файлы 1.jpg, 2.jpg... на GitHub")
 
 with c2:
-    st.write("### Описание")
+    st.write("### Описание ⭐")
     st.info(descriptions[choice])
 
 st.balloons()
