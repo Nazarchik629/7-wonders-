@@ -8,13 +8,17 @@ st.info("Ученика Солодовникова Назара КГУ ОШ №1
 st.write("---")
 
 wonders = {
-    "Урочище Босжира":       "client/public/images/boszhira.png",
-    "Чарынский каньон":      "client/public/images/charyn.png",
-    "Озеро Балхаш":          "client/public/images/balkhash.png",
-    "Поющий бархан":         "client/public/images/dune.png",
-    "Карабилуха (г. Белуха)":"client/public/images/belukha.png",
-    "Пик Хан-Тенгри":        "client/public/images/khan_tengri.png",
-    "Озеро Каинды":          "client/public/images/kaindy.png",
+    wonders = {
+    "Урочище Босжира": "1.jpg",
+    "Чарынский каньон": "2.jpg",
+    "Озеро Балхаш": "3.jpg",
+    "Поющий Бархан": "4.jpg",
+    "Карабилуха (г. Белуха)": "5.jpg",
+    "Пик Хан-Тенгри": "6.jpg",
+    "Озеро Каинды": "7.jpg"
+    
+    # и так далее...
+}
 }
 
 choice = st.selectbox("Выберите чудо природы:", list(wonders.keys()))
