@@ -1,77 +1,59 @@
 import streamlit as st
 
-# 1. Настройка страницы
-st.set_page_config(page_title="7 чудес Казахстана 🇰🇿", layout="wide")
+# 1. Настройка и Глубокий кремовый стиль
+st.set_page_config(page_title="7 чудес 🇰🇿", layout="wide")
 
-# 2. НОВЫЙ "КРЕМОВЫЙ" СТИЛЬ: Насыщенный фон и читабельный текст
 st.markdown("""
     <style>
-        /* Главный фон всего приложения (Насыщенный темный крем/беж) */
-        .stApp {
-            background-color: #E6D9C3 !important; /* Более темный, насыщенный кремовый фон */
-        }
-
-        /* Стиль для заголовков (Темно-оранжевый, глубокий) */
-        h1, h2, h3, h4 {
-            color: #C16A00 !important;
-            font-family: 'Trebuchet MS', sans-serif;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-        }
-
-        /* СТИЛИЗАЦИЯ ТЕКСТА В БЛОКАХ INFO И SUCCESS */
-        /* Принудительно ставим мягкий, глубокий темно-коричневый цвет текста в alert блоках */
+        .stApp { background-color: #D2B48C !important; } /* Темно-кремовый фон */
+        h1, h2, h3 { color: #8B4513 !important; text-align: center; } /* Коричневые заголовки */
+        
+        /* Стиль текста в блоках: Темно-коричневый (кофейный) */
         .stAlert div, .stAlert p {
-            color: #4B3621 !important; /* Мягкий темно-коричневый цвет 'кофе/шоколад' */
-            font-weight: 500; /* Немного жирнее для лучшей читаемости */
+            color: #3E2723 !important; 
+            font-weight: bold;
         }
-
-        /* Сами блоки st.info: Светлые внутри, с оранжевой рамкой */
+        
         .stAlert {
-            background-color: #FFFDF5 !important; /* Очень светлый, почти белый фон внутри блока */
-            border: 2px solid #FF8C00 !important; /* Оранжевая рамка сохраняется */
-            border-radius: 15px !important;
+            background-color: #FFF8DC !important; /* Светло-кремовый внутри блоков */
+            border: 2px solid #8B4513 !important;
+            border-radius: 12px;
         }
 
-        /* Оранжевый текст в выпадающем списке и других элементах по умолчанию */
-        .stSelectbox div[data-baseweb="select"] {
-            border: 2px solid #FF8C00 !important;
-            border-radius: 10px !important;
-        }
-        
-        /* Скрытие лишних кнопок Streamlit */
-        [data-testid="stHeaderActionElements"] { display: none; }
-        #MainMenu {visibility: hidden;}
-        footer {visibility: hidden;}
-        
-        /* Убираем хедер на ПК полностью */
-        @media (min-width: 769px) {
-            header[data-testid="stHeader"] { visibility: hidden; }
-        }
-        
-        /* Отступ сверху */
-        .block-container {
-            padding-top: 1.5rem !important;
-        }
+        [data-testid="stHeaderActionElements"], #MainMenu, footer { visibility: hidden; }
     </style>
 """, unsafe_allow_html=True)
 
-# Шапка сайта
-st.markdown("<h1 style='text-align: center;'>💛 Семь Чудес Казахстана 💛</h1>", unsafe_allow_html=True)
-st.markdown("<h3 style='text-align: center;'>✨ Менің Отаныма - менің бастамам ✨</h3>", unsafe_allow_html=True)
-# Текст в info блоках теперь будет темно-коричневым
-st.info("🌟 Ученик: Солодовников Назар, КГУ ОШ №125 🎓🏫")
-st.write("---")
+st.markdown("<h1>🤎 Семь Чудес Казахстана 🤎</h1>", unsafe_allow_html=True)
+st.write(f"<p style='text-align:center; color:#3E2723;'>Ученик: Назар Солодовников, ОШ №125</p>", unsafe_allow_html=True)
 
-# 3. База данных со смайликами (Короткая версия для надежности)
+# 2. База данных (Максимально короткие строки!)
 data = {
-    "Урочище Босжира 🏔️": {
-        "img": "1.jpg",
-        "info": "⚪ Белоснежные скалы плато Устюрт! 👽",
-        "stats": "📈 15,000 туристов в год 🎒",
-        "fact": "🎨 Скалы меняют цвет на солнце! ☀️",
-        "ads": "📱 VR-туры и QR-коды! 🤖"
-    },
-    "Чарынский каньон 🏜️": {
-        "img": "2.jpg",
-        "info": "🧱 Древний каньон 'Долина замков'! 🏰",
-        "stats": "📈 10
+    "Босжира 🏔️": ["1.jpg", "Белые скалы Устюрта 👽", "15к чел/год", "Цвет меняется на солнце ☀️"],
+    "Чарын 🏜️": ["2.jpg", "Долина замков 🏰", "100к чел/год", "Там растет древний ясень 🌳"],
+    "Балхаш 🌊": ["3.jpg", "Пресное и соленое озеро 🧂", "200к чел/год", "Зависит от ледников 🧊"],
+    "Бархан ⏳": ["4.jpg", "Песчаная гора поет 🎵", "20к чел/год", "Гул слышен далеко 📢"],
+    "Белуха 🏔️": ["5.jpg", "Высшая точка Алтая ❄️", "5к чел/год", "Центр Евразии 🌍"],
+    "Хан-Тенгри 💎": ["6.jpg", "Пик из розового мрамора ✨", "2к чел/год", "Светится розовым 🔥"],
+    "Каинды 🌲": ["7.jpg", "Лес в бирюзовой воде 🛶", "40к чел/год", "Ели не гниют в холоде 🌡️"]
+}
+
+# 3. Интерфейс
+choice = st.sidebar.selectbox("Выбери чудо: ✨", list(data.keys()))
+item = data[choice]
+
+col1, col2 = st.columns([2, 1.2])
+
+with col1:
+    try:
+        st.image(item[0], use_container_width=True)
+    except:
+        st.error("❌ Картинка не найдена!")
+    st.success("📢 Идея: VR-туры и реклама в TikTok! 📱")
+
+with col2:
+    st.info(f"✨ Что это: {item[1]}")
+    st.info(f"📊 Туристы: {item[2]}")
+    st.info(f"💡 Факт: {item[3]}")
+
+st.balloons()
