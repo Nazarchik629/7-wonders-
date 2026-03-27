@@ -33,20 +33,25 @@ descriptions = {
 # Боковая панель
 choice = st.sidebar.selectbox("Выберите чудо природы:", list(wonders.keys()))
 
-st.subheader(choice)
+# Цикл перебирает все 7 чудес из твоего словаря
+for name, file_path in wonders.items():
+    st.write("---") # Разделительная линия между объектами
+    st.subheader(f"📍 {name}")
+    
+    # Создаем две колонки для каждого чуда
+    col_img, col_txt = st.columns([2, 1])
+    
+    with col_img:
+        try:
+            st.image(file_path, use_container_width=True)
+        except:
+            st.error(f"Файл {file_path} не найден на GitHub")
+            
+    with col_txt:
+        st.markdown("#### ✨ Описание")
+        st.info(descriptions[name])
 
-# Две колонки
-c1, c2 = st.columns([2, 1])
-
-with c1:
-    try:
-        # Упростил строку с картинкой, чтобы не было ошибок с кавычками
-        st.image(wonders[choice], use_container_width=True)
-    except:
-        st.error("Картинка не найдена. Проверь файлы 1.jpg, 2.jpg... на GitHub")
-
-with c2:
-    st.write("### Описание ⭐")
-    st.info(descriptions[choice])
+# Финальный эффект в самом конце страницы
+st.balloons()
 
 st.balloons()
