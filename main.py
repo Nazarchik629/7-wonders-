@@ -1,8 +1,28 @@
 import streamlit as st
 
-# Настройка страницы
+# 1. Настройка страницы
 st.set_page_config(page_title="7 чудес Казахстана", layout="wide")
 
+# 2. CSS для скрытия только верхней панели с кнопками (Deploy, Share и т.д.)
+st.markdown("""
+    <style>
+        /* Скрываем весь хедер (верхнюю полосу с кнопками) */
+        header[data-testid="stHeader"] {
+            visibility: hidden;
+            height: 0%;
+        }
+        /* Скрываем стандартное меню Streamlit и футер */
+        #MainMenu {visibility: hidden;}
+        footer {visibility: hidden;}
+        
+        /* Убираем лишние отступы сверху, чтобы контент не уезжал вниз */
+        .block-container {
+            padding-top: 1rem;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
+# Заголовки
 st.markdown("<h1 style='text-align: center;'>Семь Чудес Казахстана 💫</h1>", unsafe_allow_html=True)
 st.markdown("<h2 style='text-align: center;'>Менің Отаныма менің бастамам</h2>", unsafe_allow_html=True)
 st.info("Ученика Солодовникова Назар КГУ ОШ №125 🧑‍🎓")
@@ -30,17 +50,16 @@ descriptions = {
     "Озеро Каинды": "Каинды — мистическая сказка в лесах Тянь-Шаня. Из бирюзовой глади озера, словно мачты кораблей, поднимаются сухие стволы вековых елей."
 }
 
-# Боковая панель
+# 3. Боковая панель (Выбор сохраняется)
 choice = st.sidebar.selectbox("Выберите чудо природы 💫:", list(wonders.keys()))
 
 st.subheader(choice)
 
-# Две колонки
+# 4. Две колонки
 c1, c2 = st.columns([2, 1])
 
 with c1:
     try:
-        # Упростил строку с картинкой, чтобы не было ошибок с кавычками
         st.image(wonders[choice], use_container_width=True)
     except:
         st.error("Картинка не найдена 🛑. Проверь файлы 1.jpg, 2.jpg... на GitHub")
