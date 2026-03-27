@@ -3,7 +3,8 @@ import streamlit as st
 # Настройка страницы
 st.set_page_config(page_title="7 чудес Казахстана", layout="wide")
 
-st.markdown("<h1 style='text-align: center;'>🇰🇿 Семь природных чудес Казахстана</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center;'>KZ Семь Чудес Казахстана</h1>", unsafe_allow_html=True)
+st.markdown("<h2 style='text-align: center;'>Меңің Отаныма-меңің бастамам</h2>", unsafe_allow_html=True)
 st.write("---")
 
 # Список картинок
